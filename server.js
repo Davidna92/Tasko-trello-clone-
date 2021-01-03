@@ -9,6 +9,8 @@ const cors = require('cors');
 require('dotenv').config();
 
 //Routes 
+const auth = require('./routes/auth');
+const users = require('./routes/users');
 
 
 //Enable requests from all cors
@@ -16,8 +18,6 @@ app.use(cors());
 
 //bodyParser
 app.use(bodyParser.json());
-
-
 
 //Connect to mongodb database
 mongoose
@@ -30,7 +30,8 @@ mongoose
 
 
 //Use routes
-
+app.use('/trello/auth', auth);
+app.use('/trello/users', users);
 
 //Port listener
 const PORT = process.env.PORT || 3001;
