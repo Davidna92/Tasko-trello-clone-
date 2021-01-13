@@ -5,8 +5,6 @@ const auth = require('../middlewares/auth');
 //Board model
 const { Board } = require('../models/board');
 
-
-
 //Post new board
 router.post('/', auth, async (req, res) => {
     try {
