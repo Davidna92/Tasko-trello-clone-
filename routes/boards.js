@@ -24,4 +24,17 @@ router.post('/', auth, async (req, res) => {
 });
 
 
+router.get('/:id', auth, async (req, res) => {
+    try {
+        const id = req.params.id;
+        Board.find({ user_id: id })
+            .sort({ date: -1 })
+            .then((board) => res.json(board));
+    } catch (error) {
+        res.send({ message: error });
+        console.log("Error with get board by user id", error);
+    }
+});
+
+
 module.exports = router;
